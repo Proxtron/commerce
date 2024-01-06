@@ -1,0 +1,21 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Active Listings</h2>
+
+    <div class="container-fluid">
+        {% for listing in listings %}
+            <div class="row p-4">
+                <div class="col-sm-3 p-4">
+                    <img class="img-fluid" src="{{listing.image_url}}">
+                </div>
+
+                <div class="col py-5">
+                    <p class="display-4"><a href="{% url 'listing' listing.id %}">{{listing.title}}</a><p>
+                    <p class="lead">{{listing.description}}</p>
+                    <p class="lead">${{listing.price}}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
